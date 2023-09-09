@@ -19,12 +19,13 @@ int registro() // função responsavel por cadastrar os usuarios no sistema
 	;strcpy(arquivo, cpf);  //responsavel por copiar valores das string
 	
 	FILE *file;  // cria o arquivo
-	file = fopen(arquivo, "w");  // cria o arquivo e o "w" siginifica escrever 
+	file = fopen(arquivo, "w");// cria o arquivo e o "w" siginifica escrever 
+	fprintf(file, "\nCpf:");
 	fprintf(file,cpf); // salvo o valor da variavel
 	fclose(file);  // fecho o arquivo ( imoportante sempre fechar )
 	
 	file = fopen(arquivo, "a");
-	fprintf(file, ",");
+	fprintf(file, "\nNome:");
 	fclose(file);
 	
 	printf("Digite o Nome a ser Cadastrado: ");
@@ -35,18 +36,18 @@ int registro() // função responsavel por cadastrar os usuarios no sistema
 	fclose(file);
 	
 	file = fopen(arquivo, "a");
-	fprintf(file, ",");
+	fprintf(file, "\nSobrenome:");
 	fclose(file);
 	
 	printf("Digite o Sobrenome a ser Cadastrado: ");
 	scanf("%s", sobrenome);
 	
-	file = fopen(arquivo, "a"); // "a" Atualiza a informação dentro do arquivo e inclue tudo oque voce digitou
+	file = fopen(arquivo, "a"); // "a" Ele adiciona as informação dentro do arquivo e inclue tudo oque voce digitou
 	fprintf(file,sobrenome); // Esse comando salva a variavel "sobrenome" dentro do arquivo
 	fclose(file);
 	
 	file = fopen(arquivo, "a"); //FOPEN serve para abrir o arquivo
-	fprintf(file, ","); 
+	fprintf(file, "\nCargo:"); 
 	fclose(file);
 	
 	printf("Digite o Cargo a ser Cadastrado: ");
@@ -54,10 +55,10 @@ int registro() // função responsavel por cadastrar os usuarios no sistema
 	
 	file = fopen(arquivo, "a");
 	fprintf(file,cargo);
+	fprintf(file,".\n\n");
 	fclose(file);
 	
 	file = fopen(arquivo, "a");
-	fprintf(file, ",");
 	fclose(file);
 
 }
@@ -70,7 +71,6 @@ int consulta()
 	char conteudo[200];
 	
 	printf("Digite o Cpf a ser consultado\n\n");
-	printf("CPF:");
 	scanf("%s",cpf);
 	
 	
@@ -82,11 +82,11 @@ int consulta()
 		printf("Não foi possivel abrir o arquivo, não localizado.\n");
 	}
 	
+	printf("\nEssas são as informaçoes do usuario:\n");
+	
 	while(fgets(conteudo, 200, file) != NULL)
 	{
-		printf("\nEssas são as informaçoes do usuario:\n");
 		printf("%s", conteudo);
-		printf("\n\n");
 	}
 	
 	system("pause");
