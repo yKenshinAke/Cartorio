@@ -153,7 +153,7 @@ int main()
 			
 			case 4
 			:printf("Obrigado por utilizar o sistema!");
-			return 0; // "Return 0" Server para quabrar uma função e sair do sistema
+			return 0; // "Return 0" Serve para quabrar uma função e sair do sistema
 			break;
 			
 			default:
